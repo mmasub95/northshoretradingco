@@ -1036,16 +1036,9 @@
     document.getElementById('cartOverlay').classList.toggle('open');
   }
 
-  // Countdown to next Saturday 6 PM
+  // Countdown to June 7 2026 6 PM
   function getNextBreakDate() {
-    const now = new Date();
-    const d = new Date(now);
-    // Find next Saturday
-    const day = d.getDay();
-    const daysUntilSat = (6 - day + 7) % 7 || 7;
-    d.setDate(d.getDate() + daysUntilSat);
-    d.setHours(18, 0, 0, 0);
-    return d;
+    return new Date('2026-06-07T18:00:00');
   }
   function updateCountdown() {
     const target = getNextBreakDate();
