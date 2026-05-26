@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact North Shore Trading Co. | Trading Card Shop — Albertson, Long Island NY</title>
+  <meta name="description" content="Contact North Shore Trading Co. in Albertson, NY. Call, email, or visit us — we're happy to help with singles, breaks, collection buyouts, and anything TCG." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Page Hero ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #0a1628 60%, #1a0d28 100%);
+      border-bottom: 1px solid rgba(200,146,42,0.12);
+      padding: calc(var(--nav-h) + 80px) 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200,146,42,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,146,42,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: var(--content-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(52px, 8vw, 88px);
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .page-hero h1 span { color: var(--gold); }
+    .page-hero p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Contact Grid Layout ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ── Contact Info Sidebar ── */
+    .contact-info-block {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .contact-info-header {
+      background: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      padding: 24px 28px;
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .contact-info-body { padding: 12px 0; }
+    .contact-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background var(--transition);
+    }
+    .contact-info-row:last-child { border-bottom: none; }
+    .contact-info-row:hover { background: rgba(200,146,42,0.04); }
+    .contact-info-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .contact-info-label {
+      font-size: 11px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .contact-info-value {
+      font-family: var(--font-sub);
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--white);
+      line-height: 1.5;
+    }
+    .contact-info-value a {
+      color: var(--white);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+    .contact-info-value a:hover { color: var(--gold); }
+    .contact-info-sub {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* ── Hours ── */
+    .hours-mini {
+      padding: 0 28px 20px;
+    }
+    .hours-mini-title {
+      font-size: 11px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .hours-mini-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .hours-mini-row:last-child { border-bottom: none; }
+    .hours-mini-day { color: rgba(255,255,255,0.65); }
+    .hours-mini-time { color: var(--white); font-weight: 600; }
+    .hours-mini-time.today { color: var(--gold); }
+    .today-pill {
+      font-size: 9px;
+      background: rgba(200,146,42,0.15);
+      color: var(--gold);
+      padding: 1px 6px;
+      border-radius: 20px;
+      margin-left: 6px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* ── Social Links ── */
+    .social-links-block {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+    .social-links-title {
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+    .social-link-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      text-decoration: none;
+      transition: background var(--transition);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 0 -12px;
+    }
+    .social-link-row:last-child { border-bottom: none; }
+    .social-link-row:hover { background: rgba(200,146,42,0.06); }
+    .social-link-icon {
+      font-size: 22px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .social-link-info {}
+    .social-link-name {
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--white);
+    }
+    .social-link-handle {
+      font-size: 12px;
+      color: var(--gray);
+    }
+    .social-link-arrow {
+      margin-left: auto;
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* ── Contact Form ── */
+    .contact-form-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(200,146,42,0.15);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .contact-form-header {
+      background: linear-gradient(135deg, var(--navy), #0f2a55);
+      border-bottom: 2px solid var(--gold);
+      padding: 28px 36px;
+    }
+    .contact-form-header h2 {
+      font-family: var(--font-head);
+      font-size: 32px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .contact-form-header p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      margin: 0;
+    }
+    .contact-form-body { padding: 36px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.65);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .form-group label .req { color: var(--gold); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--bg-dark);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(200,146,42,0.12);
+    }
+    .form-group select option { background: var(--bg-dark); }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.6;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-topic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .topic-option {
+      position: relative;
+    }
+    .topic-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .topic-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--bg-dark);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      transition: all var(--transition);
+      user-select: none;
+    }
+    .topic-label:hover {
+      border-color: rgba(200,146,42,0.3);
+      color: var(--white);
+    }
+    .topic-option input:checked + .topic-label {
+      border-color: var(--gold);
+      background: rgba(200,146,42,0.08);
+      color: var(--white);
+    }
+    .topic-icon { font-size: 18px; }
+    .form-submit-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .form-note {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ── Success state ── */
+    .form-success {
+      display: none;
+      padding: 60px 36px;
+      text-align: center;
+    }
+    .form-success.show { display: block; }
+    .success-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+    .form-success h3 {
+      font-family: var(--font-head);
+      font-size: 40px;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .form-success p {
+      font-size: 15px;
+      color: var(--gray);
+      max-width: 360px;
+      margin: 0 auto 28px;
+      line-height: 1.65;
+    }
+
+    /* ── FAQ ── */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 24px;
+      cursor: pointer;
+      transition: border-color var(--transition);
+    }
+    .faq-item:hover { border-color: rgba(200,146,42,0.25); }
+    .faq-item.open { border-color: rgba(200,146,42,0.35); }
+    .faq-q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-question {
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      line-height: 1.4;
+    }
+    .faq-toggle {
+      font-size: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform var(--transition);
+      font-weight: 300;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-answer {
+      display: none;
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ── Map ── */
+    .map-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(200,146,42,0.15);
+      height: 400px;
+    }
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ── Quick contact chips ── */
+    .quick-contact-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .quick-chip {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      text-decoration: none;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .quick-chip:hover {
+      border-color: rgba(200,146,42,0.35);
+      transform: translateY(-3px);
+    }
+    .quick-chip-icon { font-size: 32px; margin-bottom: 10px; }
+    .quick-chip-label {
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .quick-chip-value {
+      font-size: 13px;
+      color: var(--gold);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .quick-contact-strip { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+      .form-topic-grid { grid-template-columns: 1fr; }
+      .contact-form-body { padding: 24px; }
+      .contact-form-header { padding: 24px; }
+      .form-submit-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">🍪 We use cookies to improve your experience. By continuing, you agree to our <a href="contact.html#privacy">Privacy Policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn btn-sm btn-outline" onclick="document.getElementById('cookieBanner').classList.add('hidden')">Decline</button>
+    <button class="btn btn-sm btn-gold" onclick="document.getElementById('cookieBanner').classList.add('hidden')">Accept All</button>
+  </div>
+</div>
+
+<div class="announcement-strip">
+  🔥 NEW ARRIVALS EVERY WEEK — Pokémon, Yu-Gi-Oh & MTG &nbsp;|&nbsp; 📍 <a href="about.html">1042 Willis Ave, Albertson, NY</a> &nbsp;|&nbsp; 📞 <a href="tel:+13476129874">(347) 612-9874</a>
+</div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      <div class="logo-icon">🛡️</div>
+      <div class="logo-text-wrap">
+        <span class="logo-main">North Shore Trading Co.</span>
+        <span class="logo-sub">Long Island's Card Shop</span>
+      </div>
+    </a>
+    <nav class="main-nav" role="navigation" aria-label="Main">
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="breaks.html" class="nav-link">Live Breaks</a>
+      <a href="singles.html" class="nav-link">Singles</a>
+      <a href="sell.html" class="nav-link">Sell / Trade</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link active">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="header-icon-btn" onclick="toggleCart()" aria-label="Shopping cart">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" aria-label="Open menu" onclick="openMobile()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="site-logo">
+      <div class="logo-icon">🛡️</div>
+      <div class="logo-text-wrap">
+        <span class="logo-main">North Shore Trading Co.</span>
+        <span class="logo-sub">Long Island's Card Shop</span>
+      </div>
+    </a>
+    <button class="mobile-close" onclick="closeMobile()">✕</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="shop.html" onclick="closeMobile()">Shop</a>
+    <a href="breaks.html" onclick="closeMobile()">Live Breaks</a>
+    <a href="singles.html" onclick="closeMobile()">Singles</a>
+    <a href="sell.html" onclick="closeMobile()">Sell / Trade</a>
+    <a href="about.html" onclick="closeMobile()">About</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+  </nav>
+  <div style="margin-top:auto;padding-top:32px;display:flex;flex-direction:column;gap:10px">
+    <a href="tel:+13476129874" class="btn btn-gold btn-full">📞 (347) 612-9874</a>
+    <a href="breaks.html" class="btn btn-outline btn-full">🎴 View Live Breaks</a>
+  </div>
+</div>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <span class="cart-title">Your Cart</span>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛒</div>
+      <p style="font-weight:600;margin-bottom:8px">Your cart is empty</p>
+      <p style="font-size:13px;color:var(--gray)">Add some cards to get started!</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span class="cart-total-amount">$0.00</span>
+    </div>
+    <a href="shop.html" class="btn btn-gold btn-full">Checkout</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero page-body" style="position:relative;overflow:hidden">
+  <img src="images/store-front.jpg" alt="North Shore Trading Co. storefront"
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.18;z-index:0" loading="eager" />
+  <div class="page-hero-inner" style="position:relative;z-index:1">
+    <div class="section-eyebrow">We're Here to Help</div>
+    <h1>Get In <span>Touch</span></h1>
+    <p>Questions about inventory, break spots, collection buyouts, or anything else? Reach out — we actually pick up the phone.</p>
+  </div>
+</section>
+
+<!-- QUICK CONTACT STRIP -->
+<section style="background:var(--bg-dark);padding:40px 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+  <div class="container">
+    <div class="quick-contact-strip">
+      <a href="tel:+13476129874" class="quick-chip">
+        <div class="quick-chip-icon">📞</div>
+        <div class="quick-chip-label">Call Us</div>
+        <div class="quick-chip-value">(347) 612-9874</div>
+      </a>
+      <a href="mailto:info@northshoretradingco.com" class="quick-chip">
+        <div class="quick-chip-icon">✉️</div>
+        <div class="quick-chip-label">Email Us</div>
+        <div class="quick-chip-value">info@northshoretradingco.com</div>
+      </a>
+      <a href="https://maps.google.com/?q=1042+Willis+Ave+Albertson+NY+11507" target="_blank" rel="noopener" class="quick-chip">
+        <div class="quick-chip-icon">📍</div>
+        <div class="quick-chip-label">Visit Us</div>
+        <div class="quick-chip-value">1042 Willis Ave, Albertson, NY</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTACT SECTION -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT: Info + Hours + Social -->
+      <div>
+        <!-- Contact Info -->
+        <div class="contact-info-block">
+          <div class="contact-info-header">📋 Contact Information</div>
+          <div class="contact-info-body">
+            <div class="contact-info-row">
+              <span class="contact-info-icon">📍</span>
+              <div>
+                <div class="contact-info-label">Address</div>
+                <div class="contact-info-value">
+                  <a href="https://maps.google.com/?q=1042+Willis+Ave+Albertson+NY+11507" target="_blank" rel="noopener">
+                    1042 Willis Ave<br>Albertson, NY 11507
+                  </a>
+                </div>
+                <div class="contact-info-sub">Street parking on Willis Ave + rear lot available</div>
+              </div>
+            </div>
+            <div class="contact-info-row">
+              <span class="contact-info-icon">📞</span>
+              <div>
+                <div class="contact-info-label">Phone</div>
+                <div class="contact-info-value">
+                  <a href="tel:+13476129874">(347) 612-9874</a>
+                </div>
+                <div class="contact-info-sub">Call or text during store hours</div>
+              </div>
+            </div>
+            <div class="contact-info-row">
+              <span class="contact-info-icon">✉️</span>
+              <div>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-value">
+                  <a href="mailto:info@northshoretradingco.com">info@northshoretradingco.com</a>
+                </div>
+                <div class="contact-info-sub">We respond within 1 business day</div>
+              </div>
+            </div>
+            <div class="contact-info-row">
+              <span class="contact-info-icon">💰</span>
+              <div>
+                <div class="contact-info-label">Selling a Collection?</div>
+                <div class="contact-info-value">
+                  <a href="sell.html">Get a Quote →</a>
+                </div>
+                <div class="contact-info-sub">Walk-ins welcome. Same-day cash offers.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hours -->
+          <div class="hours-mini">
+            <div class="hours-mini-title">📅 Store Hours</div>
+            <div id="hoursMini"></div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links-block">
+          <div class="social-links-title">Follow & Find Us</div>
+          <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="social-link-row">
+            <div class="social-link-icon">📸</div>
+            <div class="social-link-info">
+              <div class="social-link-name">Instagram</div>
+              <div class="social-link-handle">@northshoretradingco</div>
+            </div>
+            <div class="social-link-arrow">→</div>
+          </a>
+          <a href="https://facebook.com/northshoretradingco" target="_blank" rel="noopener" class="social-link-row">
+            <div class="social-link-icon">👍</div>
+            <div class="social-link-info">
+              <div class="social-link-name">Facebook</div>
+              <div class="social-link-handle">North Shore Trading Co.</div>
+            </div>
+            <div class="social-link-arrow">→</div>
+          </a>
+          <a href="https://youtube.com/@northshoretradingco" target="_blank" rel="noopener" class="social-link-row">
+            <div class="social-link-icon">▶️</div>
+            <div class="social-link-info">
+              <div class="social-link-name">YouTube</div>
+              <div class="social-link-handle">@northshoretradingco — Pack openings & breaks</div>
+            </div>
+            <div class="social-link-arrow">→</div>
+          </a>
+          <a href="https://tiktok.com/@northshoretradingco" target="_blank" rel="noopener" class="social-link-row">
+            <div class="social-link-icon">🎵</div>
+            <div class="social-link-info">
+              <div class="social-link-name">TikTok</div>
+              <div class="social-link-handle">@northshoretradingco</div>
+            </div>
+            <div class="social-link-arrow">→</div>
+          </a>
+          <a href="https://whatnot.com/user/northshoretradingco" target="_blank" rel="noopener" class="social-link-row">
+            <div class="social-link-icon">🛒</div>
+            <div class="social-link-info">
+              <div class="social-link-name">Whatnot</div>
+              <div class="social-link-handle">northshoretradingco — Live break auctions</div>
+            </div>
+            <div class="social-link-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: Contact Form -->
+      <div>
+        <div class="contact-form-card">
+          <div class="contact-form-header">
+            <h2>Send Us a Message</h2>
+            <p>Fill out the form and we'll get back to you within one business day.</p>
+          </div>
+
+          <div class="contact-form-body" id="contactFormBody">
+            <!-- Topic selector -->
+            <div class="form-group">
+              <label>What's this about? <span class="req">*</span></label>
+              <div class="form-topic-grid">
+                <div class="topic-option">
+                  <input type="radio" name="topic" id="t-general" value="general" checked />
+                  <label class="topic-label" for="t-general">
+                    <span class="topic-icon">💬</span> General Question
+                  </label>
+                </div>
+                <div class="topic-option">
+                  <input type="radio" name="topic" id="t-singles" value="singles" />
+                  <label class="topic-label" for="t-singles">
+                    <span class="topic-icon">🔍</span> Singles / Inventory
+                  </label>
+                </div>
+                <div class="topic-option">
+                  <input type="radio" name="topic" id="t-breaks" value="breaks" />
+                  <label class="topic-label" for="t-breaks">
+                    <span class="topic-icon">🎴</span> Live Breaks
+                  </label>
+                </div>
+                <div class="topic-option">
+                  <input type="radio" name="topic" id="t-sell" value="sell" />
+                  <label class="topic-label" for="t-sell">
+                    <span class="topic-icon">💰</span> Sell / Trade
+                  </label>
+                </div>
+                <div class="topic-option">
+                  <input type="radio" name="topic" id="t-order" value="order" />
+                  <label class="topic-label" for="t-order">
+                    <span class="topic-icon">📦</span> Order / Shipping
+                  </label>
+                </div>
+                <div class="topic-option">
+                  <input type="radio" name="topic" id="t-other" value="other" />
+                  <label class="topic-label" for="t-other">
+                    <span class="topic-icon">✳️</span> Something Else
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">First Name <span class="req">*</span></label>
+                  <input type="text" id="fname" name="fname" placeholder="John" required />
+                </div>
+                <div class="form-group">
+                  <label for="lname">Last Name <span class="req">*</span></label>
+                  <input type="text" id="lname" name="lname" placeholder="Smith" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address <span class="req">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="john@email.com" required />
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" placeholder="(516) 555-0100" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject <span class="req">*</span></label>
+                <input type="text" id="subject" name="subject" placeholder="What can we help you with?" required />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message <span class="req">*</span></label>
+                <textarea id="message" name="message" placeholder="Tell us more — the more detail the better. For singles availability, include the card name, set, and condition you're looking for." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="heardFrom">How did you hear about us?</label>
+                <select id="heardFrom" name="heardFrom">
+                  <option value="">Select one...</option>
+                  <option value="google">Google Search</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="tiktok">TikTok</option>
+                  <option value="youtube">YouTube</option>
+                  <option value="whatnot">Whatnot</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="friend">Friend / Word of Mouth</option>
+                  <option value="walked">Walked by the store</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div id="formError" style="display:none;color:#ef4444;font-size:13px;margin-bottom:16px;padding:12px 16px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:8px">
+                Please fill in all required fields.
+              </div>
+
+              <div class="form-submit-row">
+                <button type="submit" class="btn btn-gold btn-lg" id="submitBtn">
+                  Send Message →
+                </button>
+                <p class="form-note">We reply within 1 business day.<br>For urgent matters, call <a href="tel:+13476129874" style="color:var(--gold)">(347) 612-9874</a>.</p>
+              </div>
+            </form>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✅</div>
+            <h3>Message Sent!</h3>
+            <p>Thanks for reaching out. We'll get back to you within one business day. For faster service, call us at (347) 612-9874.</p>
+            <a href="index.html" class="btn btn-gold">Back to Home</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="section" style="background:var(--bg-dark)">
+  <div class="container">
+    <div class="section-header centered" style="margin-bottom:32px">
+      <div class="section-eyebrow">Find Us</div>
+      <h2 class="section-title">We're in Albertson, Long Island</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.6!2d-73.649!3d40.773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c280a8b4a5f9bb%3A0x0!2s1042+Willis+Ave%2C+Albertson%2C+NY+11507!5e0!3m2!1sen!2sus!4v1700000000000"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="North Shore Trading Co. Map">
+      </iframe>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px">
+      <div style="background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:10px;padding:20px;text-align:center">
+        <div style="font-size:24px;margin-bottom:8px">🚗</div>
+        <div style="font-family:var(--font-sub);font-weight:700;font-size:13px;color:var(--white);margin-bottom:4px">By Car</div>
+        <div style="font-size:12px;color:var(--gray)">Exit off Northern State Pkwy or I-495. Street parking + rear lot.</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:10px;padding:20px;text-align:center">
+        <div style="font-size:24px;margin-bottom:8px">🚆</div>
+        <div style="font-family:var(--font-sub);font-weight:700;font-size:13px;color:var(--white);margin-bottom:4px">By Train</div>
+        <div style="font-size:12px;color:var(--gray)">Mineola LIRR station is nearby. Short ride or cab from there.</div>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid rgba(255,255,255,0.05);border-radius:10px;padding:20px;text-align:center">
+        <div style="font-size:24px;margin-bottom:8px">🕐</div>
+        <div style="font-family:var(--font-sub);font-weight:700;font-size:13px;color:var(--white);margin-bottom:4px">Walk-Ins Welcome</div>
+        <div style="font-size:12px;color:var(--gray)">No appointment needed during store hours. Come on by.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-header centered" style="margin-bottom:0">
+      <div class="section-eyebrow">Common Questions</div>
+      <h2 class="section-title">FAQ</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="faq-grid" id="faqGrid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Location Banner -->
+<div class="location-banner">
+  <div class="location-banner-inner">
+    <div class="loc-item">📍 1042 Willis Ave, Albertson, NY 11507</div>
+    <div class="loc-item">📞 (347) 612-9874</div>
+    <div class="loc-item">🕐 Mon–Sat 10AM–7PM · Sun 11AM–5PM</div>
+    <a href="https://maps.google.com/?q=1042+Willis+Ave+Albertson+NY+11507" target="_blank" rel="noopener" class="btn btn-navy btn-sm">Get Directions →</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <a href="index.html" class="site-logo">
+          <div class="logo-icon">🛡️</div>
+          <div class="logo-text-wrap">
+            <span class="logo-main">North Shore Trading Co.</span>
+            <span class="logo-sub">Long Island's Card Shop</span>
+          </div>
+        </a>
+      </div>
+      <p class="footer-tagline" style="margin-top:14px">Your local Pokémon, Yu-Gi-Oh, and MTG shop in Albertson, NY. Singles, sealed product, and live break events every week.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="Instagram">📸</a>
+        <a href="https://facebook.com/northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="Facebook">👍</a>
+        <a href="https://youtube.com/@northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="YouTube">▶️</a>
+        <a href="https://tiktok.com/@northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="TikTok">🎵</a>
+        <a href="https://whatnot.com/user/northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="Whatnot">🛒</a>
+      </div>
+      <p style="font-size:12px;color:var(--gray-dark);margin-top:10px">Subscribe for break alerts &amp; new arrivals:</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" />
+        <button>Go</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul class="footer-links">
+        <li><a href="shop.html?cat=pokemon">Pokémon</a></li>
+        <li><a href="shop.html?cat=yugioh">Yu-Gi-Oh!</a></li>
+        <li><a href="shop.html?cat=mtg">Magic: The Gathering</a></li>
+        <li><a href="shop.html?cat=sealed">Sealed Product</a></li>
+        <li><a href="singles.html">Singles Database</a></li>
+        <li><a href="shop.html?cat=graded">Graded Cards</a></li>
+        <li><a href="shop.html?cat=supplies">Supplies & Accessories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="breaks.html">Live Breaks</a></li>
+        <li><a href="sell.html">Sell / Trade</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html#shipping">Shipping Policy</a></li>
+        <li><a href="contact.html#returns">Returns</a></li>
+        <li><a href="contact.html#privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <div class="footer-contact-item">
+        <span>📍</span>
+        <span>1042 Willis Ave<br>Albertson, NY 11507</span>
+      </div>
+      <div class="footer-contact-item">
+        <span>📞</span>
+        <a href="tel:+13476129874">(347) 612-9874</a>
+      </div>
+      <div class="footer-contact-item">
+        <span>✉️</span>
+        <a href="mailto:info@northshoretradingco.com">info@northshoretradingco.com</a>
+      </div>
+      <div class="footer-hours">
+        <div class="footer-hours-row"><span>Mon – Sat</span><span>10AM – 7PM</span></div>
+        <div class="footer-hours-row"><span>Sunday</span><span>11AM – 5PM</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 North Shore Trading Co. All rights reserved.</span>
+    <span>Albertson, NY · Long Island's Card Shop</span>
+  </div>
+</footer>
+
+<script>
+  /* ── Nav scroll ── */
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ── Mobile menu ── */
+  function openMobile() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
+
+  /* ── Cart stub ── */
+  function toggleCart() {
+    document.getElementById('cartSidebar').classList.toggle('open');
+    document.getElementById('cartOverlay').classList.toggle('open');
+    document.body.style.overflow = document.getElementById('cartSidebar').classList.contains('open') ? 'hidden' : '';
+  }
+
+  /* ── Store hours ── */
+  (function renderHours() {
+    const schedule = [
+      { day: 'Monday',    time: '10:00 AM – 7:00 PM' },
+      { day: 'Tuesday',   time: '10:00 AM – 7:00 PM' },
+      { day: 'Wednesday', time: '10:00 AM – 7:00 PM' },
+      { day: 'Thursday',  time: '10:00 AM – 7:00 PM' },
+      { day: 'Friday',    time: '10:00 AM – 7:00 PM' },
+      { day: 'Saturday',  time: '10:00 AM – 7:00 PM' },
+      { day: 'Sunday',    time: '11:00 AM – 5:00 PM' },
+    ];
+    const todayIdx = (new Date().getDay() + 6) % 7;
+    document.getElementById('hoursMini').innerHTML = schedule.map((s, i) => {
+      const isToday = i === todayIdx;
+      return `<div class="hours-mini-row">
+        <span class="hours-mini-day">${s.day}${isToday ? '<span class="today-pill">Today</span>' : ''}</span>
+        <span class="hours-mini-time${isToday ? ' today' : ''}">${s.time}</span>
+      </div>`;
+    }).join('');
+  })();
+
+  /* ── Contact form ── */
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  const formBody = document.getElementById('contactFormBody');
+  const errEl = document.getElementById('formError');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const fname = document.getElementById('fname').value.trim();
+    const lname = document.getElementById('lname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!fname || !lname || !email || !subject || !message) {
+      errEl.style.display = 'block';
+      errEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+    errEl.style.display = 'none';
+
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      formBody.style.display = 'none';
+      success.classList.add('show');
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 900);
+  });
+
+  /* ── FAQ ── */
+  const faqs = [
+    {
+      q: 'Do you buy individual cards or only full collections?',
+      a: 'We buy both! Singles, binders, full collections, sealed product — bring it all in and we\'ll make an offer on the spot. No appointment needed for walk-in evaluations.'
+    },
+    {
+      q: 'How do break spots work?',
+      a: 'You buy a spot in a break and we open packs live in-store and on stream. Depending on the format, you\'re assigned a random team, color, or set — any cards that hit for your slot get shipped to you. Check the Breaks page for upcoming events.'
+    },
+    {
+      q: 'Do you ship singles?',
+      a: 'Yes! We ship all singles fast and safely — sleeved, in a toploader, inside a padded mailer. Browse the Singles page or contact us if you\'re looking for something specific.'
+    },
+    {
+      q: 'Can I request a specific card if you don\'t have it listed?',
+      a: 'Absolutely. Send us a message or call and we\'ll check our full inventory (not everything makes it online). We can also put cards on hold or source them for regular customers.'
+    },
+    {
+      q: 'Do you grade cards?',
+      a: 'We can advise on grading and facilitate PSA and CGC submissions for a fee. Bring in your cards and we\'ll assess if they\'re worth submitting and walk you through the process.'
+    },
+    {
+      q: 'What condition are your singles listed in?',
+      a: 'All singles are graded by our team using standard TCG condition scale: Near Mint (NM), Lightly Played (LP), Moderately Played (MP), and Heavily Played (HP). If you\'re ever unsure, ask us — we\'re happy to send photos before purchase.'
+    },
+    {
+      q: 'Do you host tournaments?',
+      a: 'We run and support local tournaments and are working to expand our event calendar. Follow our Instagram or check the Breaks page for upcoming competitive events. All skill levels welcome.'
+    },
+    {
+      q: 'Can I sell cards while I\'m in the store?',
+      a: 'Yes — walk-ins are welcome any time during business hours. We\'ll evaluate your cards same day and pay cash on the spot if we agree on a price. No appointment needed.'
+    },
+  ];
+
+  document.getElementById('faqGrid').innerHTML = faqs.map((f, i) => `
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span class="faq-question">${f.q}</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">${f.a}</div>
+    </div>
+  `).join('');
+
+  function toggleFaq(el) {
+    el.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

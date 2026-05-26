@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sell & Trade — North Shore Trading Co. | Buy Collections Long Island NY</title>
+  <meta name="description" content="Sell your Pokémon, Yu-Gi-Oh, and MTG cards to North Shore Trading Co. in Albertson, NY. Walk-ins welcome, same-day cash. Get a free quote today." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .sell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .what-we-buy { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+    .buy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .buy-card:hover { border-color: var(--border-gold); transform: translateY(-3px); box-shadow: var(--shadow-gold); }
+    .buy-card-icon { font-size: 40px; margin-bottom: 12px; }
+    .buy-card-title { font-family: var(--font-sub); font-weight: 700; font-size: 15px; color: var(--white); margin-bottom: 6px; }
+    .buy-card-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
+    .process-steps { display: flex; flex-direction: column; gap: 0; }
+    .process-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .process-step:last-child { border-bottom: none; }
+    .process-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: #0A0A0A;
+      font-family: var(--font-head);
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .process-title { font-family: var(--font-sub); font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: 4px; }
+    .process-desc { font-size: 14px; color: var(--gray); line-height: 1.6; }
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      position: sticky;
+      top: calc(var(--nav-h) + 20px);
+    }
+    .file-drop {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      position: relative;
+    }
+    .file-drop:hover, .file-drop.drag-over {
+      border-color: var(--gold);
+      background: rgba(200,146,42,0.04);
+    }
+    .file-drop input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .file-drop-icon { font-size: 36px; margin-bottom: 10px; }
+    .file-drop-text { font-size: 14px; color: var(--gray); }
+    .file-drop-text strong { color: var(--gold); }
+    .file-preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .file-chip {
+      background: rgba(200,146,42,0.1);
+      border: 1px solid rgba(200,146,42,0.25);
+      border-radius: var(--radius-sm);
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .file-chip button { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 14px; line-height: 1; padding: 0; }
+    .success-msg {
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      display: none;
+    }
+    .success-msg.show { display: block; }
+    @media (max-width: 1024px) { .sell-grid { gap: 40px; } }
+    @media (max-width: 768px) {
+      .sell-grid { grid-template-columns: 1fr; }
+      .form-card { position: static; }
+      .what-we-buy { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) { .what-we-buy { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<div class="announcement-strip">
+  💰 WE BUY COLLECTIONS — Walk-Ins Welcome &nbsp;|&nbsp; 📍 <a href="about.html">1042 Willis Ave, Albertson, NY</a> &nbsp;|&nbsp; 📞 <a href="tel:+13476129874">(347) 612-9874</a>
+</div>
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo"><div class="logo-icon">🛡️</div><div class="logo-text-wrap"><span class="logo-main">North Shore Trading Co.</span><span class="logo-sub">Long Island's Card Shop</span></div></a>
+    <nav class="main-nav">
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="breaks.html" class="nav-link">Live Breaks</a>
+      <a href="singles.html" class="nav-link">Singles</a>
+      <a href="sell.html" class="nav-link active">Sell / Trade</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="header-icon-btn">🛒<span class="cart-count">0</span></button>
+      <button class="hamburger" onclick="openMobile()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="site-logo"><div class="logo-icon">🛡️</div><div class="logo-text-wrap"><span class="logo-main">North Shore Trading Co.</span><span class="logo-sub">Long Island's Card Shop</span></div></a>
+    <button class="mobile-close" onclick="closeMobile()">✕</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="shop.html">Shop</a><a href="breaks.html">Live Breaks</a><a href="singles.html">Singles</a>
+    <a href="sell.html">Sell / Trade</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+<div class="page-body">
+  <div class="page-hero" style="position:relative;overflow:hidden">
+    <img src="images/store-interior.jpg" alt="North Shore Trading Co. store interior"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;opacity:0.2" loading="eager" />
+    <div class="container" style="position:relative;z-index:1">
+      <div class="section-eyebrow">Get Paid Today</div>
+      <h1 class="page-hero-title">Sell & Trade</h1>
+      <p class="page-hero-sub">We buy Pokémon, Yu-Gi-Oh, and MTG collections. Walk-ins always welcome — get cash same day.</p>
+    </div>
+  </div>
+
+  <!-- What We Buy -->
+  <section style="background:var(--bg-dark);border-bottom:1px solid var(--border);padding:56px 0">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-eyebrow">We're Always Buying</div>
+        <h2 class="section-title">What We Buy</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="what-we-buy">
+        <div class="buy-card"><div class="buy-card-icon">⚡</div><div class="buy-card-title">Pokémon Singles</div><div class="buy-card-desc">Vintage, modern, holo rares, Alt Arts, graded slabs</div></div>
+        <div class="buy-card"><div class="buy-card-icon">📦</div><div class="buy-card-title">Sealed Product</div><div class="buy-card-desc">Booster boxes, ETBs, tins, collections — any game</div></div>
+        <div class="buy-card"><div class="buy-card-icon">🐉</div><div class="buy-card-title">Yu-Gi-Oh Cards</div><div class="buy-card-desc">Tournament staples, old school, 1st editions, rarities</div></div>
+        <div class="buy-card"><div class="buy-card-icon">✨</div><div class="buy-card-title">Magic: The Gathering</div><div class="buy-card-desc">Vintage Power 9, Commander staples, Modern, Legacy</div></div>
+        <div class="buy-card"><div class="buy-card-icon">🏆</div><div class="buy-card-title">Graded Cards</div><div class="buy-card-desc">PSA, BGS, CGC — all grades and all games considered</div></div>
+        <div class="buy-card"><div class="buy-card-icon">🃏</div><div class="buy-card-title">Full Collections</div><div class="buy-card-desc">Binders, bulk lots, estates — we evaluate everything</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Sell Section -->
+  <section class="section" style="background:var(--bg)">
+    <div class="container">
+      <div class="sell-grid">
+
+        <!-- Left: Info -->
+        <div>
+          <div class="section-eyebrow">How It Works</div>
+          <h2 class="section-title" style="font-size:42px;margin-bottom:24px">Simple. Fast. Fair.</h2>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="process-num">1</div>
+              <div>
+                <div class="process-title">Submit Your Items</div>
+                <p class="process-desc">Fill out the form with what you have and upload photos. Or just walk into the store — no appointment needed.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="process-num">2</div>
+              <div>
+                <div class="process-title">Free Evaluation</div>
+                <p class="process-desc">Our team reviews your cards and looks up current market values. We're transparent about how we price — no guessing games.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="process-num">3</div>
+              <div>
+                <div class="process-title">Get Your Offer</div>
+                <p class="process-desc">We make a cash offer. No pressure — take it or leave it. If you accept, you're paid immediately, same day.</p>
+              </div>
+            </div>
+            <div class="process-step">
+              <div class="process-num">4</div>
+              <div>
+                <div class="process-title">Walk Out With Cash</div>
+                <p class="process-desc">Accept and get paid on the spot. We also offer store credit at a premium rate if you prefer to shop with us.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust signals -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px">
+            <div style="background:rgba(200,146,42,0.07);border:1px solid rgba(200,146,42,0.15);border-radius:var(--radius-md);padding:20px">
+              <div style="font-size:28px;margin-bottom:8px">💵</div>
+              <div style="font-family:var(--font-sub);font-weight:700;font-size:15px;color:var(--white);margin-bottom:4px">Same-Day Cash</div>
+              <div style="font-size:13px;color:var(--gray)">Get paid the same day you walk in.</div>
+            </div>
+            <div style="background:rgba(200,146,42,0.07);border:1px solid rgba(200,146,42,0.15);border-radius:var(--radius-md);padding:20px">
+              <div style="font-size:28px;margin-bottom:8px">🤝</div>
+              <div style="font-family:var(--font-sub);font-weight:700;font-size:15px;color:var(--white);margin-bottom:4px">No Pressure</div>
+              <div style="font-size:13px;color:var(--gray)">Walk away anytime — zero obligation.</div>
+            </div>
+            <div style="background:rgba(200,146,42,0.07);border:1px solid rgba(200,146,42,0.15);border-radius:var(--radius-md);padding:20px">
+              <div style="font-size:28px;margin-bottom:8px">📈</div>
+              <div style="font-family:var(--font-sub);font-weight:700;font-size:15px;color:var(--white);margin-bottom:4px">Market Pricing</div>
+              <div style="font-size:13px;color:var(--gray)">We use TCGPlayer, eBay sold, & PSA data.</div>
+            </div>
+            <div style="background:rgba(200,146,42,0.07);border:1px solid rgba(200,146,42,0.15);border-radius:var(--radius-md);padding:20px">
+              <div style="font-size:28px;margin-bottom:8px">🏪</div>
+              <div style="font-family:var(--font-sub);font-weight:700;font-size:15px;color:var(--white);margin-bottom:4px">Walk-Ins Welcome</div>
+              <div style="font-size:13px;color:var(--gray)">No appointment needed. Just come in.</div>
+            </div>
+          </div>
+
+          <div style="background:linear-gradient(135deg,var(--navy),#0f2a55);border:1px solid rgba(96,165,250,0.2);border-radius:var(--radius-md);padding:24px;margin-top:28px">
+            <div style="font-family:var(--font-sub);font-weight:700;font-size:16px;color:var(--white);margin-bottom:8px">📍 Prefer to Walk In?</div>
+            <p style="font-size:14px;color:rgba(255,255,255,0.7);margin-bottom:16px">Come by anytime during store hours. Bring your collection — we'll evaluate it on the spot.</p>
+            <div style="font-size:14px;color:rgba(255,255,255,0.6)">
+              1042 Willis Ave, Albertson, NY 11507<br>
+              Mon–Sat 10AM–7PM · Sun 11AM–5PM<br>
+              <a href="tel:+13476129874" style="color:var(--gold)">(347) 612-9874</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="form-card">
+          <div style="margin-bottom:24px">
+            <div class="section-eyebrow">Free Quote</div>
+            <h3 style="font-family:var(--font-head);font-size:32px;color:var(--white);margin-bottom:6px">Tell Us What You Have</h3>
+            <p style="font-size:14px;color:var(--gray)">We'll get back to you within 24 hours with an estimate.</p>
+          </div>
+
+          <div class="success-msg" id="successMsg">
+            <div style="font-size:48px;margin-bottom:12px">✅</div>
+            <div style="font-family:var(--font-sub);font-weight:700;font-size:20px;color:var(--white);margin-bottom:8px">Request Submitted!</div>
+            <p style="font-size:14px;color:var(--gray)">We'll review your submission and get back to you within 24 hours. Or call us at <a href="tel:+13476129874" style="color:var(--gold)">(347) 612-9874</a> for a faster response.</p>
+          </div>
+
+          <form id="sellForm" onsubmit="submitForm(event)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input type="text" class="form-control" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input type="text" class="form-control" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address *</label>
+              <input type="email" class="form-control" placeholder="john@email.com" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" placeholder="(516) 555-0000" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Type of Transaction *</label>
+              <select class="form-control" required>
+                <option value="">Select…</option>
+                <option>Selling my collection for cash</option>
+                <option>Trading for store credit</option>
+                <option>Trading for other cards</option>
+                <option>Not sure — just want a quote</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Game(s)</label>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
+                <label class="form-check"><input type="checkbox" /> ⚡ Pokémon</label>
+                <label class="form-check"><input type="checkbox" /> 🐉 Yu-Gi-Oh</label>
+                <label class="form-check"><input type="checkbox" /> ✨ MTG</label>
+                <label class="form-check"><input type="checkbox" /> 📦 Sealed Product</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Describe Your Items *</label>
+              <textarea class="form-control" placeholder="E.g. '200 Pokémon cards including a PSA 9 Charizard, 3 sealed ETBs, and a binder of holos…'" required style="min-height:100px"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Upload Photos (optional)</label>
+              <div class="file-drop" id="fileDrop">
+                <input type="file" multiple accept="image/*" onchange="handleFiles(this.files)" />
+                <div class="file-drop-icon">📸</div>
+                <div class="file-drop-text"><strong>Click to upload</strong> or drag & drop<br>JPG, PNG, HEIC up to 10MB each</div>
+              </div>
+              <div class="file-preview" id="filePreview"></div>
+            </div>
+            <button type="submit" class="btn btn-gold btn-full" style="font-size:16px;padding:15px">
+              Submit for Free Quote →
+            </button>
+            <p style="font-size:12px;color:var(--gray);text-align:center;margin-top:12px">No spam. We'll only contact you about your quote.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="site-logo footer-logo"><div class="logo-icon">🛡️</div><div class="logo-text-wrap"><span class="logo-main">North Shore Trading Co.</span><span class="logo-sub">Long Island's Card Shop</span></div></a>
+      <p class="footer-tagline" style="margin-top:14px">We buy Pokémon, Yu-Gi-Oh, and MTG collections. Walk-ins welcome in Albertson, NY.</p>
+      <div class="footer-social"><a href="https://www.instagram.com/northshoretradingco" target="_blank" rel="noopener" class="social-icon">📸</a><a href="https://www.facebook.com/northshoretradingco" target="_blank" rel="noopener" class="social-icon">👍</a><a href="https://www.youtube.com/@NorthShoreTradingCo" target="_blank" rel="noopener" class="social-icon">▶️</a><a href="https://www.tiktok.com/@northshoretradingco" target="_blank" rel="noopener" class="social-icon">🎵</a></div>
+    </div>
+    <div class="footer-col"><h4>Shop</h4><ul class="footer-links"><li><a href="shop.html?cat=pokemon">Pokémon</a></li><li><a href="shop.html?cat=yugioh">Yu-Gi-Oh!</a></li><li><a href="shop.html?cat=mtg">MTG</a></li><li><a href="singles.html">Singles</a></li></ul></div>
+    <div class="footer-col"><h4>Info</h4><ul class="footer-links"><li><a href="breaks.html">Live Breaks</a></li><li><a href="sell.html">Sell / Trade</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Visit</h4>
+      <div class="footer-contact-item"><span>📍</span><span>1042 Willis Ave<br>Albertson, NY 11507</span></div>
+      <div class="footer-contact-item"><span>📞</span><a href="tel:+13476129874">(347) 612-9874</a></div>
+      <div class="footer-hours" style="margin-top:12px"><div class="hours-row"><span class="day">Mon–Sat</span><span>10AM–7PM</span></div><div class="hours-row"><span class="day">Sunday</span><span>11AM–5PM</span></div></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 North Shore Trading Co. All Rights Reserved.</span><div class="footer-bottom-links"><a href="contact.html#privacy">Privacy</a><a href="contact.html#terms">Terms</a></div></div>
+</footer>
+
+<script>
+  window.addEventListener('scroll',()=>document.getElementById('siteHeader').classList.toggle('scrolled',window.scrollY>40));
+  function openMobile(){document.getElementById('mobileMenu').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow='';}
+
+  function handleFiles(files){
+    const preview=document.getElementById('filePreview');
+    Array.from(files).forEach(f=>{
+      const chip=document.createElement('div');
+      chip.className='file-chip';
+      chip.innerHTML=`📎 ${f.name.length>20?f.name.slice(0,18)+'…':f.name} <button onclick="this.parentElement.remove()">×</button>`;
+      preview.appendChild(chip);
+    });
+  }
+
+  // Drag & drop
+  const drop=document.getElementById('fileDrop');
+  drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('drag-over');});
+  drop.addEventListener('dragleave',()=>drop.classList.remove('drag-over'));
+  drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('drag-over');handleFiles(e.dataTransfer.files);});
+
+  function submitForm(e){
+    e.preventDefault();
+    document.getElementById('sellForm').style.display='none';
+    document.getElementById('successMsg').classList.add('show');
+    window.scrollTo({top:document.getElementById('sellForm').offsetTop-100,behavior:'smooth'});
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>North Shore Trading Co. | Trading Card Shop — Albertson, Long Island NY</title>
+  <meta name="description" content="Long Island's premier trading card shop. Pokémon, Yu-Gi-Oh, Magic: The Gathering singles, sealed product, and live events. Located at 1042 Willis Ave, Albertson, NY." />
+  <meta name="keywords" content="trading cards Long Island, card shop Albertson NY, Pokémon cards Long Island, Yu-Gi-Oh Long Island, Magic the Gathering NY, TCG shop Long Island" />
+  <meta property="og:title" content="North Shore Trading Co. | Trading Card Shop — Long Island, NY" />
+  <meta property="og:description" content="Pokémon, Yu-Gi-Oh, MTG — Singles, Sealed Product & Live Events. Visit us in Albertson, NY." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Hero ── */
+    .hero {
+      min-height: calc(100vh - var(--nav-h));
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        -45deg,
+        #0d0d1a, #0a1628, #1a0d28, #0d1a14,
+        #1a1428, #0a0d1a, #141a0d, #0d1428
+      );
+      background-size: 600% 600%;
+      animation: holographic 12s ease infinite;
+    }
+    @keyframes holographic {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .hero-shimmer {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(200,146,42,0.03) 10%,
+        transparent 20%,
+        rgba(96,165,250,0.03) 30%,
+        transparent 40%,
+        rgba(167,139,250,0.03) 50%,
+        transparent 60%
+      );
+      background-size: 200% 200%;
+      animation: shimmer-move 6s linear infinite;
+    }
+    @keyframes shimmer-move {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 200% 200%; }
+    }
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200,146,42,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,146,42,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-glow-left {
+      position: absolute;
+      left: -200px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(26,58,107,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-glow-right {
+      position: absolute;
+      right: -100px;
+      top: 30%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(200,146,42,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(200,146,42,0.1);
+      border: 1px solid rgba(200,146,42,0.3);
+      color: var(--gold);
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 20px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+    .hero-headline {
+      font-family: var(--font-head);
+      font-size: clamp(48px, 6vw, 80px);
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .hero-headline .gold { color: var(--gold); }
+    .hero-tagline {
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+    }
+    .hero-tagline span { color: var(--gold); }
+    .hero-desc {
+      font-size: 16px;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: var(--font-head);
+      font-size: 36px;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--gray);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-top: 3px;
+    }
+    /* Floating card stack */
+    .hero-cards {
+      position: relative;
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-card {
+      position: absolute;
+      border-radius: 12px;
+      border: 2px solid rgba(200,146,42,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), var(--shadow-gold);
+      font-size: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.4s ease;
+    }
+    .hero-card-1 {
+      width: 190px;
+      height: 266px;
+      background: linear-gradient(135deg, #1a0a2e, #2d1654);
+      transform: rotate(-12deg) translate(-80px, 20px);
+      z-index: 1;
+    }
+    .hero-card-2 {
+      width: 210px;
+      height: 294px;
+      background: linear-gradient(135deg, #0a1a2e, #163a6b);
+      transform: rotate(-4deg) translate(0px, -10px);
+      z-index: 3;
+      border-color: rgba(200,146,42,0.6);
+    }
+    .hero-card-3 {
+      width: 190px;
+      height: 266px;
+      background: linear-gradient(135deg, #1a2e0a, #3a6b16);
+      transform: rotate(10deg) translate(80px, 20px);
+      z-index: 1;
+    }
+    .hero-cards:hover .hero-card-1 { transform: rotate(-15deg) translate(-100px, 10px); }
+    .hero-cards:hover .hero-card-2 { transform: rotate(0deg) translate(0, -20px); }
+    .hero-cards:hover .hero-card-3 { transform: rotate(13deg) translate(100px, 10px); }
+    .card-foil-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      background: linear-gradient(
+        135deg,
+        transparent 0%,
+        rgba(200,146,42,0.08) 30%,
+        rgba(255,255,255,0.1) 50%,
+        rgba(96,165,250,0.06) 70%,
+        transparent 100%
+      );
+      animation: foil-shift 4s ease-in-out infinite alternate;
+    }
+    @keyframes foil-shift {
+      0%   { opacity: 0.3; background-position: 0% 0%; }
+      100% { opacity: 1; background-position: 100% 100%; }
+    }
+    .hero-card-label {
+      position: absolute;
+      bottom: 12px;
+      left: 0; right: 0;
+      text-align: center;
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── Category Strip ── */
+    .category-strip {
+      background: var(--bg-dark);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      overflow: hidden;
+    }
+    .category-scroll {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .category-scroll::-webkit-scrollbar { display: none; }
+    .cat-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 24px;
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gray);
+      white-space: nowrap;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+    }
+    .cat-pill:hover { color: var(--white); }
+    .cat-pill.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .cat-pill-icon { font-size: 18px; }
+
+    /* ── Featured Products ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    /* ── Why Us ── */
+    .why-us {
+      background: linear-gradient(135deg, var(--bg-dark) 0%, #0f1f38 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+    }
+    .why-card {
+      background: var(--bg-dark);
+      padding: 40px 28px;
+      text-align: center;
+      transition: background var(--transition);
+    }
+    .why-card:hover { background: #0f1f38; }
+    .why-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(200,146,42,0.1);
+      border: 2px solid rgba(200,146,42,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 20px;
+      transition: all var(--transition);
+    }
+    .why-card:hover .why-icon {
+      background: rgba(200,146,42,0.2);
+      border-color: var(--gold);
+      box-shadow: var(--shadow-gold);
+    }
+    .why-title {
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .why-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ── Upcoming Break Teaser ── */
+    .break-teaser {
+      background: linear-gradient(135deg, #0a1628 0%, #1a0a2e 100%);
+      border: 1px solid rgba(200,146,42,0.2);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0;
+    }
+    .break-teaser-body { padding: 40px 48px; }
+    .break-teaser-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(239,68,68,0.15);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #f87171;
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 18px;
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: pulse-dot 1.2s ease-in-out infinite;
+    }
+    .break-teaser h2 {
+      font-family: var(--font-head);
+      font-size: 48px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .break-teaser p { font-size: 16px; color: var(--gray); margin-bottom: 28px; }
+    .break-teaser-side {
+      background: rgba(0,0,0,0.3);
+      border-left: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      min-width: 280px;
+    }
+    .break-teaser-side-label {
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ── Promo banner ── */
+    .promo-banner {
+      background: linear-gradient(90deg, var(--navy) 0%, #0f2a55 100%);
+      border-radius: var(--radius-md);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border: 1px solid rgba(96,165,250,0.2);
+    }
+    .promo-text h3 {
+      font-family: var(--font-head);
+      font-size: 32px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .promo-text p { font-size: 15px; color: rgba(255,255,255,0.7); }
+
+    /* ── Instagram strip ── */
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 4px;
+    }
+    .insta-tile {
+      aspect-ratio: 1;
+      background: var(--bg-mid);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      font-size: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .insta-tile img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .insta-tile:hover img { transform: scale(1.06); }
+    .insta-tile::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(200,146,42,0);
+      transition: background var(--transition);
+      z-index: 1;
+    }
+    .insta-tile:hover::after { background: rgba(200,146,42,0.18); }
+
+    /* ── Location banner ── */
+    .location-banner {
+      background: var(--gold);
+      color: #0A0A0A;
+    }
+    .location-banner-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .loc-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sub);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .insta-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-cards { height: 300px; }
+      .hero-card-1 { transform: rotate(-10deg) translate(-60px, 15px); }
+      .hero-card-3 { transform: rotate(10deg) translate(60px, 15px); }
+      .hero-card-1, .hero-card-3 { width: 150px; height: 210px; font-size: 70px; }
+      .hero-card-2 { width: 170px; height: 238px; font-size: 80px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .break-teaser { grid-template-columns: 1fr; }
+      .break-teaser-side { border-left: none; border-top: 1px solid var(--border); min-width: unset; }
+      .promo-banner { flex-direction: column; text-align: center; }
+      .insta-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .hero-stats { gap: 20px; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Cookie Banner -->
+<div class="cookie-banner" id="cookieBanner">
+  <p class="cookie-text">🍪 We use cookies to improve your experience. By continuing to browse, you agree to our <a href="contact.html#privacy">Privacy Policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn btn-sm btn-outline" onclick="document.getElementById('cookieBanner').classList.add('hidden')">Decline</button>
+    <button class="btn btn-sm btn-gold" onclick="document.getElementById('cookieBanner').classList.add('hidden')">Accept All</button>
+  </div>
+</div>
+
+<!-- Announcement -->
+<div class="announcement-strip">
+  🔥 NEW ARRIVALS EVERY WEEK — Pokémon, Yu-Gi-Oh & MTG &nbsp;|&nbsp; 📍 <a href="about.html">1042 Willis Ave, Albertson, NY</a> &nbsp;|&nbsp; 📞 <a href="tel:+13476129874">(347) 612-9874</a>
+</div>
+
+<!-- Header -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="site-logo">
+      <div class="logo-icon">🛡️</div>
+      <div class="logo-text-wrap">
+        <span class="logo-main">North Shore Trading Co.</span>
+        <span class="logo-sub">Long Island's Card Shop</span>
+      </div>
+    </a>
+    <nav class="main-nav" role="navigation" aria-label="Main">
+      <a href="shop.html" class="nav-link">Shop</a>
+      <a href="breaks.html" class="nav-link">Live Breaks</a>
+      <a href="singles.html" class="nav-link">Singles</a>
+      <a href="sell.html" class="nav-link">Sell / Trade</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="header-icon-btn" onclick="toggleCart()" aria-label="Shopping cart">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="hamburger" aria-label="Open menu" onclick="openMobile()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="site-logo">
+      <div class="logo-icon">🛡️</div>
+      <div class="logo-text-wrap">
+        <span class="logo-main">North Shore Trading Co.</span>
+        <span class="logo-sub">Long Island's Card Shop</span>
+      </div>
+    </a>
+    <button class="mobile-close" onclick="closeMobile()">✕</button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="shop.html" onclick="closeMobile()">Shop</a>
+    <a href="breaks.html" onclick="closeMobile()">Live Breaks</a>
+    <a href="singles.html" onclick="closeMobile()">Singles</a>
+    <a href="sell.html" onclick="closeMobile()">Sell / Trade</a>
+    <a href="about.html" onclick="closeMobile()">About</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+  </nav>
+  <div style="margin-top:auto;padding-top:32px;display:flex;flex-direction:column;gap:10px">
+    <a href="tel:+13476129874" class="btn btn-gold btn-full">📞 (347) 612-9874</a>
+    <a href="breaks.html" class="btn btn-outline btn-full">🎴 View Live Breaks</a>
+  </div>
+</div>
+
+<!-- Cart Overlay -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <span class="cart-title">Your Cart</span>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛒</div>
+      <p style="font-weight:600;margin-bottom:8px">Your cart is empty</p>
+      <p style="font-size:13px;color:var(--gray)">Add some cards to get started!</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span class="cart-total-amount">$0.00</span>
+    </div>
+    <a href="shop.html" class="btn btn-gold btn-full">Checkout</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero page-body">
+  <div class="hero-bg"></div>
+  <img src="images/event-tournament.jpg" alt="Live tournament at North Shore Trading Co."
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;opacity:0.28;z-index:0;pointer-events:none" loading="eager" />
+  <div class="hero-shimmer"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow-left"></div>
+  <div class="hero-glow-right"></div>
+
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Albertson, Long Island — Est. 2022</div>
+      <h1 class="hero-headline">
+        The Card Shop<br>Long Island<br><span class="gold">Has Been Waiting For</span>
+      </h1>
+      <p class="hero-tagline">
+        <span>Rip.</span> Trade. <span>Collect.</span>
+      </p>
+      <p class="hero-desc">
+        Pokémon, Yu-Gi-Oh, Magic: The Gathering — singles, sealed product, and live break events. Your community card shop right here in Nassau County.
+      </p>
+      <div class="hero-ctas">
+        <a href="shop.html" class="btn btn-gold btn-lg">Shop Now</a>
+        <a href="breaks.html" class="btn btn-outline btn-lg">View Breaks 🎴</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">10K+</div>
+          <div class="hero-stat-label">Singles In Stock</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">3</div>
+          <div class="hero-stat-label">Games Covered</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">Weekly</div>
+          <div class="hero-stat-label">Live Events</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-cards">
+      <div class="hero-card hero-card-1">
+        ⚡
+        <div class="card-foil-overlay"></div>
+        <div class="hero-card-label">Pokémon</div>
+      </div>
+      <div class="hero-card hero-card-2">
+        🐉
+        <div class="card-foil-overlay"></div>
+        <div class="hero-card-label">Yu-Gi-Oh</div>
+      </div>
+      <div class="hero-card hero-card-3">
+        ✨
+        <div class="card-foil-overlay"></div>
+        <div class="hero-card-label">MTG</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Strip -->
+<div class="category-strip">
+  <div class="category-scroll">
+    <a href="shop.html?cat=all" class="cat-pill active"><span class="cat-pill-icon">🃏</span> All Cards</a>
+    <a href="shop.html?cat=pokemon" class="cat-pill"><span class="cat-pill-icon">⚡</span> Pokémon</a>
+    <a href="shop.html?cat=yugioh" class="cat-pill"><span class="cat-pill-icon">🐉</span> Yu-Gi-Oh</a>
+    <a href="shop.html?cat=mtg" class="cat-pill"><span class="cat-pill-icon">✨</span> Magic: The Gathering</a>
+    <a href="shop.html?cat=sealed" class="cat-pill"><span class="cat-pill-icon">📦</span> Sealed Product</a>
+    <a href="singles.html" class="cat-pill"><span class="cat-pill-icon">🔍</span> Singles</a>
+    <a href="shop.html?cat=graded" class="cat-pill"><span class="cat-pill-icon">🏆</span> Graded Cards</a>
+    <a href="shop.html?cat=supplies" class="cat-pill"><span class="cat-pill-icon">🛡️</span> Supplies</a>
+  </div>
+</div>
+
+<!-- Featured Products -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;">
+      <div>
+        <div class="section-eyebrow">🔥 Hot Right Now</div>
+        <h2 class="section-title">Newest Arrivals</h2>
+        <div class="divider"></div>
+      </div>
+      <a href="shop.html" class="btn btn-outline">View All Products →</a>
+    </div>
+    <div class="products-grid" id="featuredGrid">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Why Shop With Us -->
+<section class="why-us section-sm">
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">📍</div>
+      <div class="why-title">Local Shop</div>
+      <p class="why-desc">We're your neighbors in Albertson, NY. Walk in, hang out, and be part of the community.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎓</div>
+      <div class="why-title">Expert Staff</div>
+      <p class="why-desc">Our team lives and breathes TCGs. We know the meta, the grading, and the market.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎴</div>
+      <div class="why-title">Live Break Events</div>
+      <p class="why-desc">Weekly live events right in-store. Buy a spot, rip packs, and win big with the community.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🚀</div>
+      <div class="why-title">Fast Shipping</div>
+      <p class="why-desc">Can't make it in? We ship fast and safe — cards arrive protected and ready to play or display.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Break Teaser -->
+<section class="section" style="background:var(--bg-dark)">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-eyebrow">Live Events</div>
+      <h2 class="section-title">Breaks Every Week</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Buy a spot in our live break events — watch us rip packs live in-store or on stream. Hit big, win rare cards.</p>
+    </div>
+    <div class="break-teaser">
+      <div class="break-teaser-body">
+        <div class="break-teaser-label">
+          <span class="live-dot"></span> Next Break
+        </div>
+        <h2>Pokémon Prismatic Evolutions Case Break</h2>
+        <p>Multiple booster boxes ripped live. Random team/set spots available — every spot guaranteed a hit. In-store + stream.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="breaks.html" class="btn btn-gold">Buy a Spot — $25</a>
+          <a href="breaks.html" class="btn btn-outline">View All Breaks</a>
+        </div>
+      </div>
+      <div class="break-teaser-side">
+        <div class="break-teaser-side-label">Starts In</div>
+        <div class="countdown" id="breakCountdown">
+          <div class="countdown-unit"><span class="countdown-num" id="cd-d">00</span><span class="countdown-label">Days</span></div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-h">00</span><span class="countdown-label">Hrs</span></div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-m">00</span><span class="countdown-label">Min</span></div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit"><span class="countdown-num" id="cd-s">00</span><span class="countdown-label">Sec</span></div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-family:var(--font-sub);font-weight:700;font-size:14px;color:var(--white);margin-bottom:4px">Saturday, June 7 — 6:00 PM</div>
+          <div style="font-size:12px;color:var(--gray)">1042 Willis Ave, Albertson, NY</div>
+        </div>
+        <a href="breaks.html" class="btn btn-gold btn-full">Reserve Your Spot</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Games We Carry -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-eyebrow">Games We Carry</div>
+      <h2 class="section-title">Three Games, One Shop</h2>
+      <div class="divider"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <a href="shop.html?cat=pokemon" class="card" style="padding:40px 32px;text-align:center;text-decoration:none">
+        <div style="font-size:64px;margin-bottom:20px">⚡</div>
+        <h3 style="font-family:var(--font-head);font-size:32px;color:var(--white);margin-bottom:10px">Pokémon TCG</h3>
+        <p style="font-size:14px;color:var(--gray);margin-bottom:20px">Scarlet & Violet, Prismatic Evolutions, vintage Base Set — singles, packs, and boxes.</p>
+        <span class="btn btn-outline btn-sm">Shop Pokémon →</span>
+      </a>
+      <a href="shop.html?cat=yugioh" class="card" style="padding:40px 32px;text-align:center;text-decoration:none">
+        <div style="font-size:64px;margin-bottom:20px">🐉</div>
+        <h3 style="font-family:var(--font-head);font-size:32px;color:var(--white);margin-bottom:10px">Yu-Gi-Oh!</h3>
+        <p style="font-size:14px;color:var(--gray);margin-bottom:20px">Structure decks, booster sets, tournament staples, and rare collector pieces.</p>
+        <span class="btn btn-outline btn-sm">Shop Yu-Gi-Oh →</span>
+      </a>
+      <a href="shop.html?cat=mtg" class="card" style="padding:40px 32px;text-align:center;text-decoration:none">
+        <div style="font-size:64px;margin-bottom:20px">✨</div>
+        <h3 style="font-family:var(--font-head);font-size:32px;color:var(--white);margin-bottom:10px">Magic: The Gathering</h3>
+        <p style="font-size:14px;color:var(--gray);margin-bottom:20px">Modern, Commander staples, Draft boosters, and collector's editions.</p>
+        <span class="btn btn-outline btn-sm">Shop MTG →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Store Photo Banner -->
+<section style="position:relative;overflow:hidden;height:420px;display:flex;align-items:center">
+  <img src="images/event-tournament.jpg" alt="Live event at North Shore Trading Co." loading="lazy"
+       style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%" />
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,15,0.88) 0%,rgba(7,9,15,0.55) 60%,rgba(7,9,15,0.3) 100%)"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-eyebrow">Every Week, In Store</div>
+    <h2 style="font-family:var(--font-head);font-size:clamp(40px,6vw,68px);color:var(--white);line-height:1;margin-bottom:16px">
+      Live Events &amp; Tournaments
+    </h2>
+    <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:460px;line-height:1.7;margin-bottom:28px">
+      From casual Friday nights to competitive tournaments — our store is your local TCG community hub. All skill levels welcome.
+    </p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="breaks.html" class="btn btn-gold btn-lg">View Upcoming Events</a>
+      <a href="about.html" class="btn btn-outline btn-lg">About the Store</a>
+    </div>
+  </div>
+</section>
+
+<!-- Promo -->
+<section style="background:var(--bg-dark);padding:48px 0">
+  <div class="container">
+    <div class="promo-banner">
+      <div class="promo-text">
+        <h3>Sell Your Collection</h3>
+        <p>We buy Pokémon, Yu-Gi-Oh, and MTG collections. Walk ins welcome — get paid same day.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="sell.html" class="btn btn-gold">Get a Quote</a>
+        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram Section -->
+<section class="section" style="background:var(--bg)">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-eyebrow">Follow the Hype</div>
+      <h2 class="section-title">@northshoretradingco</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Follow us on Instagram for pack openings, new arrivals, break highlights, and local events.</p>
+    </div>
+    <div class="insta-grid">
+      <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="insta-tile">
+        <img src="images/shelves-sealed.jpg" alt="Our Pokémon sealed product wall" loading="lazy" />
+      </a>
+      <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="insta-tile">
+        <img src="images/event-tournament.jpg" alt="Live tournament event at North Shore Trading Co." loading="lazy" />
+      </a>
+      <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="insta-tile">
+        <img src="images/store-interior.jpg" alt="Store interior and display cases" loading="lazy" />
+      </a>
+      <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="insta-tile">
+        <img src="images/store-front.jpg" alt="North Shore Trading Co. storefront" loading="lazy" />
+      </a>
+      <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="insta-tile">
+        <img src="images/shelves-sealed.jpg" alt="Sealed product selection" loading="lazy" style="object-position:right center" />
+      </a>
+      <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="insta-tile">
+        <img src="images/event-tournament.jpg" alt="Community game night" loading="lazy" style="object-position:left center" />
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:24px">
+      <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="btn btn-outline">
+        📸 Follow on Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section style="background:linear-gradient(135deg,var(--navy) 0%,#0f2a55 100%);padding:64px 0;border-top:1px solid rgba(200,146,42,0.15)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center">
+      <div>
+        <div class="section-eyebrow">Stay In The Loop</div>
+        <h2 class="section-title" style="font-size:42px">Get New Arrival &amp; Break Alerts</h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.65);margin-top:12px">Be the first to know when new sealed product drops, break spots open, or rare singles hit the case.</p>
+      </div>
+      <div>
+        <div class="newsletter-form" style="margin-bottom:10px">
+          <input type="email" placeholder="Your email address" />
+          <button type="submit">Subscribe →</button>
+        </div>
+        <p style="font-size:12px;color:rgba(255,255,255,0.4)">No spam. Just cards. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Location Banner -->
+<div class="location-banner">
+  <div class="location-banner-inner">
+    <div class="loc-item">📍 1042 Willis Ave, Albertson, NY 11507</div>
+    <div class="loc-item">📞 (347) 612-9874</div>
+    <div class="loc-item">🕐 Mon–Sat 10AM–7PM · Sun 11AM–5PM</div>
+    <a href="about.html" class="btn btn-navy btn-sm">Get Directions →</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <a href="index.html" class="site-logo">
+          <div class="logo-icon">🛡️</div>
+          <div class="logo-text-wrap">
+            <span class="logo-main">North Shore Trading Co.</span>
+            <span class="logo-sub">Long Island's Card Shop</span>
+          </div>
+        </a>
+      </div>
+      <p class="footer-tagline" style="margin-top:14px">Your local Pokémon, Yu-Gi-Oh, and MTG shop in Albertson, NY. Singles, sealed product, and live break events every week.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="Instagram">📸</a>
+        <a href="https://facebook.com/northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="Facebook">👍</a>
+        <a href="https://youtube.com/@northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="YouTube">▶️</a>
+        <a href="https://tiktok.com/@northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="TikTok">🎵</a>
+        <a href="https://whatnot.com/user/northshoretradingco" target="_blank" rel="noopener" class="social-icon" title="Whatnot">🛒</a>
+      </div>
+      <p style="font-size:12px;color:var(--gray-dark);margin-top:10px">Subscribe for break alerts &amp; new arrivals:</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" />
+        <button>Go</button>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul class="footer-links">
+        <li><a href="shop.html?cat=pokemon">Pokémon</a></li>
+        <li><a href="shop.html?cat=yugioh">Yu-Gi-Oh!</a></li>
+        <li><a href="shop.html?cat=mtg">Magic: The Gathering</a></li>
+        <li><a href="shop.html?cat=sealed">Sealed Product</a></li>
+        <li><a href="singles.html">Singles Database</a></li>
+        <li><a href="shop.html?cat=graded">Graded Cards</a></li>
+        <li><a href="shop.html?cat=supplies">Supplies & Accessories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="breaks.html">Live Breaks</a></li>
+        <li><a href="sell.html">Sell / Trade</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html#shipping">Shipping Policy</a></li>
+        <li><a href="contact.html#returns">Returns</a></li>
+        <li><a href="contact.html#privacy">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Visit Us</h4>
+      <div class="footer-contact-item">
+        <span>📍</span>
+        <span>1042 Willis Ave<br>Albertson, NY 11507</span>
+      </div>
+      <div class="footer-contact-item">
+        <span>📞</span>
+        <a href="tel:+13476129874">(347) 612-9874</a>
+      </div>
+      <div class="footer-contact-item">
+        <span>✉️</span>
+        <a href="mailto:info@northshoretradingco.com">info@northshoretradingco.com</a>
+      </div>
+      <div class="footer-hours" style="margin-top:16px">
+        <div class="hours-row"><span class="day">Mon – Sat</span><span>10:00 AM – 7:00 PM</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span>11:00 AM – 5:00 PM</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 North Shore Trading Co. All Rights Reserved.</span>
+    <div class="footer-bottom-links">
+      <a href="contact.html#privacy">Privacy Policy</a>
+      <a href="contact.html#terms">Terms</a>
+      <a href="contact.html#shipping">Shipping</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky header
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  function openMobile() {
+    document.getElementById('mobileMenu').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Cart
+  function toggleCart() {
+    document.getElementById('cartSidebar').classList.toggle('open');
+    document.getElementById('cartOverlay').classList.toggle('open');
+  }
+
+  // Countdown to next Saturday 6 PM
+  function getNextBreakDate() {
+    const now = new Date();
+    const d = new Date(now);
+    // Find next Saturday
+    const day = d.getDay();
+    const daysUntilSat = (6 - day + 7) % 7 || 7;
+    d.setDate(d.getDate() + daysUntilSat);
+    d.setHours(18, 0, 0, 0);
+    return d;
+  }
+  function updateCountdown() {
+    const target = getNextBreakDate();
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) return;
+    const days = Math.floor(diff / 86400000);
+    const hrs  = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(hrs).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Featured products data
+  const products = [
+    { name: 'First Partner Illustration Collection (Series 1)', cat: 'Pokémon', price: '$54.00', badge: 'new', img: 'images/product-4.png', desc: 'Sealed Collection Box' },
+    { name: 'Mega Evolution Perfect Order Booster Pack', cat: 'Pokémon', price: '$9.00', badge: 'new', img: 'images/product-3.png', desc: 'Factory Sealed Booster' },
+    { name: 'Ascended Heroes Booster Pack', cat: 'Pokémon', price: '$15.00', badge: 'hot', img: 'images/product-5.png', desc: 'Factory Sealed Booster' },
+    { name: 'Mega Evolution Ascended Heroes Elite Trainer Box', cat: 'Pokémon', price: '$179.00', badge: 'hot', img: 'images/product-6.png', desc: 'ETB · 9 Packs + Accessories' },
+    { name: 'Mega Evolution Ascended Heroes Tech Sticker Collection', cat: 'Pokémon', price: '$45.00', img: 'images/product-7.png', desc: 'Sticker Collection Set' },
+    { name: 'Mega Evolution: Ascended Heroes: 2-Pack Blister', cat: 'Pokémon', price: '$29.00', img: 'images/product-8.png', desc: '2-Pack Blister Sealed' },
+    { name: 'Ascended Heroes First Partners Deluxe Pin Collection', cat: 'Pokémon', price: '$79.00', badge: 'new', img: 'images/product-2.png', desc: 'Deluxe Pin Collection Box' },
+    { name: 'Mega Evolution Ascended Heroes Mini Tin', cat: 'Pokémon', price: '$32.99', img: 'images/product-1.png', desc: 'Mini Tin · Booster Packs Included' },
+  ];
+
+  const grid = document.getElementById('featuredGrid');
+  products.forEach(p => {
+    const badgeHTML = p.badge === 'hot'  ? '<span class="badge badge-hot">🔥 Hot</span>'
+                    : p.badge === 'new'  ? '<span class="badge badge-new">✨ New</span>'
+                    : p.badge === 'sale' ? '<span class="badge badge-sale">💸 Sale</span>'
+                    : '';
+    grid.innerHTML += `
+      <div class="product-card">
+        <div class="product-card-img" style="padding:0;overflow:hidden">
+          ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:contain;padding:12px;box-sizing:border-box" loading="lazy" />` : p.emoji}
+          <div class="product-card-badges">${badgeHTML}</div>
+          <button class="product-card-wishlist" title="Wishlist">♡</button>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-category">${p.cat}</div>
+          <div class="product-card-name">${p.name}</div>
+          <div class="product-card-meta">${p.desc}</div>
+          <div class="product-card-footer">
+            <div class="product-card-price">${p.price}${p.was ? `<span class="was">${p.was}</span>` : ''}</div>
+            <button class="product-card-add" onclick="addToCart('${p.name}', ${parseFloat(p.price.replace(/[^0-9.]/g,''))})" title="Add to cart">+</button>
+          </div>
+        </div>
+      </div>`;
+  });
+
+  // Cart logic
+  let cart = [];
+  function addToCart(name, price) {
+    cart.push({ name, price });
+    document.getElementById('cartCount').textContent = cart.length;
+    updateCartUI();
+    document.getElementById('cartSidebar').classList.add('open');
+    document.getElementById('cartOverlay').classList.add('open');
+  }
+  function updateCartUI() {
+    const items = document.querySelector('.cart-items');
+    const total = cart.reduce((s, i) => s + i.price, 0);
+    document.querySelector('.cart-total-amount').textContent = '$' + total.toFixed(2);
+    if (cart.length === 0) {
+      items.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">🛒</div><p style="font-weight:600;margin-bottom:8px">Your cart is empty</p><p style="font-size:13px;color:var(--gray)">Add some cards to get started!</p></div>';
+    } else {
+      items.innerHTML = cart.map((item, i) => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
+          <div>
+            <div style="font-size:14px;font-weight:600;color:var(--white)">${item.name}</div>
+            <div style="font-size:13px;color:var(--gold)">$${item.price.toFixed(2)}</div>
+          </div>
+          <button onclick="removeFromCart(${i})" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);color:#f87171;padding:5px 10px;border-radius:4px;font-size:12px;cursor:pointer">Remove</button>
+        </div>`).join('');
+    }
+  }
+  function removeFromCart(i) {
+    cart.splice(i, 1);
+    document.getElementById('cartCount').textContent = cart.length;
+    updateCartUI();
+  }
+
+  // Today's hours highlight
+  const today = new Date().getDay(); // 0=Sun
+  document.querySelectorAll('.hours-row').forEach((row, i) => {
+    if (i === 0 && today >= 1 && today <= 6) row.classList.add('today');
+    if (i === 1 && today === 0) row.classList.add('today');
+  });
+</script>
+</body>
+</html>

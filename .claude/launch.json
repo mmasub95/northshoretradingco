@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "north-shore-trading-co",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4301"],
+      "port": 4301
+    }
+  ]
+}
