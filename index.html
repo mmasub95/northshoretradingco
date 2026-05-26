@@ -718,8 +718,8 @@
   <div class="container">
     <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;">
       <div>
-        <div class="section-eyebrow">🔥 Hot Right Now</div>
-        <h2 class="section-title">Newest Arrivals</h2>
+        <div class="section-eyebrow">⭐ Community Favorites</div>
+        <h2 class="section-title">Most Popular</h2>
         <div class="divider"></div>
       </div>
       <a href="shop.html" class="btn btn-outline">View All Products →</a>
@@ -1066,26 +1066,28 @@
 
   // Featured products data
   const products = [
-    { name: 'First Partner Illustration Collection (Series 1)', cat: 'Pokémon', price: '$54.00', badge: 'new', img: 'images/product-4.png', desc: 'Sealed Collection Box' },
-    { name: 'Mega Evolution Perfect Order Booster Pack', cat: 'Pokémon', price: '$9.00', badge: 'new', img: 'images/product-3.png', desc: 'Factory Sealed Booster' },
-    { name: 'Ascended Heroes Booster Pack', cat: 'Pokémon', price: '$15.00', badge: 'hot', img: 'images/product-5.png', desc: 'Factory Sealed Booster' },
-    { name: 'Mega Evolution Ascended Heroes Elite Trainer Box', cat: 'Pokémon', price: '$179.00', badge: 'hot', img: 'images/product-6.png', desc: 'ETB · 9 Packs + Accessories' },
-    { name: 'Mega Evolution Ascended Heroes Tech Sticker Collection', cat: 'Pokémon', price: '$45.00', img: 'images/product-7.png', desc: 'Sticker Collection Set' },
-    { name: 'Mega Evolution: Ascended Heroes: 2-Pack Blister', cat: 'Pokémon', price: '$29.00', img: 'images/product-8.png', desc: '2-Pack Blister Sealed' },
-    { name: 'Ascended Heroes First Partners Deluxe Pin Collection', cat: 'Pokémon', price: '$79.00', badge: 'new', img: 'images/product-2.png', desc: 'Deluxe Pin Collection Box' },
-    { name: 'Mega Evolution Ascended Heroes Mini Tin', cat: 'Pokémon', price: '$32.99', img: 'images/product-1.png', desc: 'Mini Tin · Booster Packs Included' },
+    { name: 'First Partner Illustration Collection (Series 1)', cat: 'Pokémon', price: '$54.00', badge: 'new', img: 'images/product-4.png', desc: 'Sealed Collection Box', soldOut: true },
+    { name: 'Mega Evolution Perfect Order Booster Pack', cat: 'Pokémon', price: '$9.00', badge: 'new', img: 'images/product-3.png', desc: 'Factory Sealed Booster', soldOut: true },
+    { name: 'Ascended Heroes Booster Pack', cat: 'Pokémon', price: '$15.00', badge: 'hot', img: 'images/product-5.png', desc: 'Factory Sealed Booster', soldOut: true },
+    { name: 'Mega Evolution Ascended Heroes Elite Trainer Box', cat: 'Pokémon', price: '$179.00', badge: 'hot', img: 'images/product-6.png', desc: 'ETB · 9 Packs + Accessories', soldOut: true },
+    { name: 'Mega Evolution Ascended Heroes Tech Sticker Collection', cat: 'Pokémon', price: '$45.00', img: 'images/product-7.png', desc: 'Sticker Collection Set', soldOut: true },
+    { name: 'Mega Evolution: Ascended Heroes: 2-Pack Blister', cat: 'Pokémon', price: '$29.00', img: 'images/product-8.png', desc: '2-Pack Blister Sealed', soldOut: true },
+    { name: 'Ascended Heroes First Partners Deluxe Pin Collection', cat: 'Pokémon', price: '$79.00', badge: 'new', img: 'images/product-2.png', desc: 'Deluxe Pin Collection Box', soldOut: true },
+    { name: 'Mega Evolution Ascended Heroes Mini Tin', cat: 'Pokémon', price: '$32.99', img: 'images/product-1.png', desc: 'Mini Tin · Booster Packs Included', soldOut: true },
   ];
 
   const grid = document.getElementById('featuredGrid');
   products.forEach(p => {
-    const badgeHTML = p.badge === 'hot'  ? '<span class="badge badge-hot">🔥 Hot</span>'
+    const badgeHTML = p.soldOut ? '<span class="badge" style="background:rgba(239,68,68,0.18);color:#f87171;border:1px solid rgba(239,68,68,0.35)">Sold Out</span>'
+                    : p.badge === 'hot'  ? '<span class="badge badge-hot">🔥 Hot</span>'
                     : p.badge === 'new'  ? '<span class="badge badge-new">✨ New</span>'
                     : p.badge === 'sale' ? '<span class="badge badge-sale">💸 Sale</span>'
                     : '';
     grid.innerHTML += `
-      <div class="product-card">
-        <div class="product-card-img" style="padding:0;overflow:hidden">
-          ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:contain;padding:12px;box-sizing:border-box" loading="lazy" />` : p.emoji}
+      <div class="product-card" style="${p.soldOut ? 'opacity:0.78' : ''}">
+        <div class="product-card-img" style="padding:0;overflow:hidden;position:relative">
+          ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:contain;padding:12px;box-sizing:border-box${p.soldOut ? ';filter:grayscale(40%)' : ''}" loading="lazy" />` : p.emoji}
+          ${p.soldOut ? `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(7,9,15,0.45)"><span style="font-family:var(--font-sub);font-weight:800;font-size:15px;letter-spacing:0.12em;text-transform:uppercase;color:#f87171;border:2px solid rgba(239,68,68,0.6);padding:6px 14px;border-radius:6px;background:rgba(7,9,15,0.7)">Sold Out</span></div>` : ''}
           <div class="product-card-badges">${badgeHTML}</div>
           <button class="product-card-wishlist" title="Wishlist">♡</button>
         </div>
@@ -1094,8 +1096,10 @@
           <div class="product-card-name">${p.name}</div>
           <div class="product-card-meta">${p.desc}</div>
           <div class="product-card-footer">
-            <div class="product-card-price">${p.price}${p.was ? `<span class="was">${p.was}</span>` : ''}</div>
-            <button class="product-card-add" onclick="addToCart('${p.name}', ${parseFloat(p.price.replace(/[^0-9.]/g,''))})" title="Add to cart">+</button>
+            <div class="product-card-price" style="${p.soldOut ? 'color:var(--gray);text-decoration:line-through' : ''}">${p.price}${p.was ? `<span class="was">${p.was}</span>` : ''}</div>
+            ${p.soldOut
+              ? `<button class="product-card-add" disabled style="opacity:0.35;cursor:not-allowed" title="Sold out">✕</button>`
+              : `<button class="product-card-add" onclick="addToCart('${p.name}', ${parseFloat(p.price.replace(/[^0-9.]/g,''))})" title="Add to cart">+</button>`}
           </div>
         </div>
       </div>`;
